@@ -1,27 +1,41 @@
-# MyAngularApp
+# Angular Registration Form
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+This project is an Angular application that provides a dynamic registration form. The form fields are fetched from a server, and the form is built dynamically based on the received fields. The application also includes a welcome page that is displayed after successful registration.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Dynamic registration form
+- Form field validation
+- HTTP interceptor for logging requests and responses
+- Welcome page after successful registration
 
-## Code scaffolding
+## Setup
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone the repository:
 
-## Build
+```bash
+https://github.com/mikenthiwa/xm_frontend.git
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. Navigate to the project directory:
 
-## Running unit tests
+```bash
+cd xm_frontend
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Install the dependencies:
 
-## Running end-to-end tests
+```bash
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4. Run the application:
 
-## Further help
+```bash
+ng serve
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+5. Navigate to `http://localhost:4200/` in your browser to view the application.
+
+
+
