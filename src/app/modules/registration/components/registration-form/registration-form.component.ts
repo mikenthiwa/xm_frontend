@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import { Router } from "@angular/router";
 import {FormBuilder, FormControl, FormControlName, FormGroup, Validators} from '@angular/forms';
 
 import { RegistrationService } from '../../../../core/registration.service';
-import { FormField, RegexValidation, MaxLengthValidation, MinLengthValidation } from '../../../../core/models';
+import { FormField } from '../../../../core/models';
 
 @Component({
   selector: 'app-registration-form',
@@ -15,13 +16,15 @@ export class RegistrationFormComponent implements OnInit{
 
   constructor(
     private formBuilder: FormBuilder,
-    private registrationService: RegistrationService
+    private registrationService: RegistrationService,
+    private router: Router
   ) {
     this.registrationForm = this.createFormGroup();
   }
 
   ngOnInit(): void {
     this.registrationService.getFormFields().subscribe(fields => {
+      console.log('fields', fields);
       this.formFields = fields;
       this.registrationForm = this.createFormGroup();
     });
@@ -67,8 +70,12 @@ export class RegistrationFormComponent implements OnInit{
 
   onSubmit(): void {
     if (this.registrationForm.valid) {
-      console.log(this.registrationForm.value);
-      // Here you would send the form data to the server...
+      console.log(this.registrationForm.value)
+      this.registrationService.registerUser(this.registrationForm.value).subscribe(response => {
+        if(response.success) {
+          this.router.navigate(['/welcome'])
+        }
+      });
     }
   }
 
