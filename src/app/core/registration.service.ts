@@ -15,4 +15,8 @@ export class RegistrationService {
   getFormFields(): Observable<FormField[]> {
     return of(FormFields);
   }
+
+  registerUser(form: Form): Observable<any> {
+    return of({success: true, message: 'User registered successfully'});
+  }
 }
