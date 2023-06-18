@@ -1,0 +1,18 @@
+<div class="form-container">
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <h1 class="form-title">Register</h1>
+    <div *ngFor="let field of formFields">
+      <ng-container [ngSwitch]="field.name">
+        <app-password-field *ngSwitchCase="'password'" [control]="$any(registrationForm).controls['password']"></app-password-field>
+        <app-phone-field *ngSwitchCase="'phone'" [control]="$any(registrationForm).get('phone')"></app-phone-field>
+        <mat-form-field *ngSwitchDefault appearance="fill">
+          <mat-label>{{ field.label }}</mat-label>
+          <input matInput [type]="field.type" formControlName="{{ field.name }}" />
+          <mat-error *ngIf="isControlInvalid(field.name)">
+            Error: {{ getControlError(field.name) }}
+          </mat-error>
+        </mat-form-field>
+      </ng-container>  </div>
+  <button mat-raised-button color="primary" type="submit" [disabled]="registrationForm.invalid">Register</button>
+</form>
+</div>
